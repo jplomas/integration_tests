@@ -110,10 +110,11 @@ jobs:
 
   tests_webstack:
     # Run full webstack integration tests (wallet and explorer)
-    machine: true
+    machine:
+      python:
+        version: 3.6.1
     steps:
       - checkout
-      - run: sudo pyenv global 2.7.11 3.5.1
       - run: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
       - run: sudo apt update -y
       - run: sudo apt install -y locales default-jre default-jdk python3-pip netcat cpulimit bsdtar nodejs
