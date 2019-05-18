@@ -108,14 +108,12 @@ jobs:
   tests_webstack:
     # Run full webstack integration tests (wallet and explorer)
     machine: true
-    pre:
-      - cat /etc/*release
-      - pyenv global 2.7.11 3.5.1
     steps:
       - checkout
+      - run: sudo pyenv global 2.7.11 3.5.1
       - run: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
       - run: sudo apt update -y
-      - run: sudo apt install -y locales default-jre default-jdk python3 python3-pip netcat cpulimit bsdtar nodejs
+      - run: sudo apt install -y locales default-jre default-jdk python3-pip netcat cpulimit bsdtar nodejs
       - run: sudo wget https://cmake.org/files/v3.7/cmake-3.7.2-Linux-x86_64.tar.gz && tar xzvf cmake-3.7.2-Linux-x86_64.tar.gz
       - run: sudo echo "export PATH=$PWD/cmake-3.7.2-Linux-x86_64/bin:$PATH" >> $BASH_ENV
       - run: sudo locale-gen en_US.UTF-8
