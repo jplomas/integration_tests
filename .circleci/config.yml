@@ -133,6 +133,7 @@ jobs:
           command: |
             sudo python -m pip install --upgrade pip setuptools wheel
             sudo python -m pip install pipenv
+      - run: sudo pyenv install 3.4.3
       - run: sudo wget https://cmake.org/files/v3.7/cmake-3.7.2-Linux-x86_64.tar.gz && tar xzvf cmake-3.7.2-Linux-x86_64.tar.gz
       - run: sudo echo "export PATH=$PWD/cmake-3.7.2-Linux-x86_64/bin:$PATH" >> $BASH_ENV
       - run: sudo locale-gen en_US.UTF-8
@@ -148,8 +149,8 @@ jobs:
       - run: npm install -g electrify-qrl --unsafe-perm --allow-root
       - run: npm install -g chimp@0.51.1
       - run: npm install -g selenium-standalone
-      - run: pip install -U setuptools
-      - run: pip install -U -r requirements.txt
+      - run: sudo pip install -U setuptools
+      - run: sudo pip install -U -r requirements.txt
       - run: cd tests && git clone https://github.com/theQRL/qrl-wallet.git
       - run: cd tests && git clone https://github.com/theQRL/block-explorer.git
       - run: cd tests/qrl-wallet && meteor npm install --unsafe-perm --allow-root
