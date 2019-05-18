@@ -111,8 +111,7 @@ jobs:
   tests_webstack:
     # Run full webstack integration tests (wallet and explorer)
     machine:
-      python:
-        version: 3.4.3
+      image: ubuntu-1604:201903-01
     steps:
       - checkout
       - run: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
