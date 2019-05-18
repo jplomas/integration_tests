@@ -111,7 +111,7 @@ jobs:
   tests_webstack:
     # Run full webstack integration tests (wallet and explorer)
     docker:
-        version: 3.4.3	      - image: qrledger/qrl-docker:xenial
+      - image: qrledger/qrl-docker:xenial
     environment:
       PYTHONPATH: /root/project
     steps:
