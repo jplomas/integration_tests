@@ -110,9 +110,10 @@ jobs:
 
   tests_webstack:
     # Run full webstack integration tests (wallet and explorer)
-    machine:
-      python:
-        version: 3.4.3
+    docker:
+      - image: qrledger/qrl-docker:xenial
+    environment:
+      PYTHONPATH: /root/project
     steps:
       - checkout
       - run: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
