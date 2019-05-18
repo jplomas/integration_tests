@@ -118,6 +118,21 @@ jobs:
       - run: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
       - run: sudo apt update -y
       - run: sudo apt install -y locales default-jre default-jdk python3-pip netcat cpulimit bsdtar nodejs
+      - run:
+           name: update pyenv
+           command: |
+             # Install pyenv-update to allow addition of python 3.4.3
+             git clone git://github.com/pyenv/pyenv-update.git $(pyenv root)/plugins/pyenv-update
+             pyenv update
+             pyenv install 3.4.3
+      - run:
+          name: Set Python Version
+          command: pyenv global 3.4.3
+      - run:
+          name: install/update pip pipenv
+          command: |
+            sudo python -m pip install --upgrade pip setuptools wheel
+            sudo python -m pip install pipenv
       - run: sudo wget https://cmake.org/files/v3.7/cmake-3.7.2-Linux-x86_64.tar.gz && tar xzvf cmake-3.7.2-Linux-x86_64.tar.gz
       - run: sudo echo "export PATH=$PWD/cmake-3.7.2-Linux-x86_64/bin:$PATH" >> $BASH_ENV
       - run: sudo locale-gen en_US.UTF-8
