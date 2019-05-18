@@ -108,12 +108,11 @@ jobs:
       - run: while ! echo exit | nc 127.0.0.1 10002; do sleep 10; done
       - run: cd tests/js && npm install && npm rebuild && npm test
 
-  tests_webstack:
+   tests_webstack:
     # Run full webstack integration tests (wallet and explorer)
-    docker:
-      - image: qrledger/qrl-docker:xenial
-    environment:
-      PYTHONPATH: /root/project
+    machine:
+      python:
+        version: 3.4.3
     steps:
       - checkout
       - run: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
